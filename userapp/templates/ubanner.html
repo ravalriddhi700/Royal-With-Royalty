@@ -1,0 +1,63 @@
+{% load static %}
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            {% if request.path == '/uabout' %}
+            <h2>About Us</h2>
+            {% elif request.path == '/ucontact' %}
+            <h2>Contact Us</h2>
+            {% elif request.path == '/uforgotpassword' %}
+            <h2>Forgot Password</h2>
+            {% elif request.path == '/uproduct' %}
+            <h2>Product </h2>
+            {% elif request.path == '/usignin' %}
+            <h2>User Sign In</h2>
+            {% elif request.path == '/uprofile' %}
+            <h2>Profile</h2>
+            {% elif request.path == '/usignup' %}
+            <h2>User Sign Up</h2>
+            {% elif request.path == '/uterms' %}
+            <h2> Terms & Conditions</h2>
+            {% elif request.path == '/ucart' %}
+            <h2> Cart</h2>          
+            {% elif request.path == '/uproductdetails' %}
+            <h2>Product Details</h2>
+            {% elif request.path == '/uorder' %}
+            <h2> Order</h2>
+            {% elif request.path == '/uorderdetails' %}
+            <h2> Order Details</h2>          
+            
+            {% endif %}
+            
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if request.path == '/uabout' %}
+                <li class="active">About Us</li>
+                {% elif request.path == '/ucontact' %}
+                <li class="active">Contact Us</li>
+                {% elif request.path == '/uforgotpassword' %}
+                <li class="active">Forgot Password </li>
+                {% elif request.path == '/uproduct' %}
+                <li class="active"> Product </li>
+                {% elif request.path == '/usignin' %}
+                <li class="active"> User Sign In </li>
+                {% elif request.path == '/uprofile' %}
+                <li class="active"> Profile </li>
+                {% elif request.path == '/usignup' %}
+                <li class="active"> User Sign Up </li>
+                {% elif request.path == '/uterms' %}
+                <li class="active"> Terms & Conditions </li>
+                {% elif request.path == '/uproductdetails' %}
+                <li class="active"> Product Details</li>
+                {% elif request.path == '/ucart' %}
+                <li class="active"> Cart</li>
+                {% elif request.path == '/uorder' %}
+                <li class="active"> Order</li>
+                {% elif request.path == '/uorderdetails' %}
+                <li class="active"> Order Details</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+
+
+
+<div class="about-us-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-7 d-flex align-items-center">
+                <div class="overview-content">
+                    <h2>Welcome To <span>Royal With Loyalty</span> </h2>
+                    <p class="short_desc">At Royal With Loyalty, we craft timeless jewelry pieces that blend royal elegance with a commitment
+                         to trust and quality. Our collection is a reflection of sophistication and craftsmanship, designed to
+                          celebrate your most cherished moments. Each piece is meticulously created with precision, ensuring
+                           a perfect harmony of beauty and durability. Whether you're seeking a classic statement or a modern
+                            masterpiece, Royal With Loyalty's promises unmatched artistry and authenticity. Experience the regal
+                             charm and heartfelt loyalty that define our brand.</p>
+                    <div class="hiraola-about-us_btn-area">
+                        <a class="about-us_btn" href="uproduct">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <div class="overview-img text-center img-hover_effect">
+                    <a href="#">
+                        <img class="img-full" src="{% static 'assets/images/about-us/1.jpg' %}" alt="Hiraola's About Us Image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</br></br>
+
+
+
+
+<div class="team-area" style="background: linear-gradient(to right, #f8f9fa, #e9ecef); padding: 50px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title-2" style="text-align: center; margin-bottom: 30px;">
+                    <h4 style="font-size: 28px; color: #b76e79; font-weight: bold; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); letter-spacing: 2px;">Our Team</h4>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <script>
+                function handleHover(element, scale) {
+                    element.style.transform = `scale(${scale})`;
+                    element.style.transition = "transform 0.3s ease-in-out";
+                }
+            </script>
+
+            <style>
+                .team-member {
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease-in-out;
+                    border: 3px solid #cda557; /* Added border */
+                }
+
+                .team-member {
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .team-thumb img {
+                    width: 100%;
+                    border-radius: 10px;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                .team-member:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                }
+
+                .team-content h3 {
+                    margin: 15px 0 5px;
+                    font-size: 22px;
+                    color: #444;
+                    font-weight: bold;
+                }
+
+                .team-content p {
+                    font-size: 16px;
+                    color: #666;
+                }
+
+                .hiraola-social_link ul {
+                    list-style: none;
+                    padding: 0;
+                    margin-top: 10px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                }
+
+                .hiraola-social_link ul li a {
+                    display: inline-block;
+                    font-size: 18px;
+                    color: #fff;
+                    width: 35px;
+                    height: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    border-radius: 50%;
+                    transition: all 0.3s;
+                }
+
+                .facebook a { background: #3b5998; }
+                .twitter a { background: #1da1f2; }
+                .youtube a { background: #ff0000; }
+                .google-plus a { background: #db4a39; }
+                .instagram a { background: #e1306c; }
+
+                .hiraola-social_link ul li a:hover {
+                    opacity: 0.7;
+                    transform: scale(1.1);
+                }
+            </style>
+
+            <!-- Team Members -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="team-member" onmouseover="handleHover(this, 1.05)" onmouseout="handleHover(this, 1)">
+                    <div class="team-thumb img-hover_effect">
+                        <a href="#"><img src="{% static 'assets/images/about-us/team/7.jpg' %}" alt="Our Team Member"></a>
+                    </div>
+                    <div class="team-content text-center">
+                        <h3>Riddhi Raval</h3>
+                        <p>IT Expert</p>
+                        <a href="#">riddhiraval700@gmail.com</a>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li class="youtube"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li class="instagram"><a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Team Members -->
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="team-member" onmouseover="handleHover(this, 1.05)" onmouseout="handleHover(this, 1)">
+                    <div class="team-thumb img-hover_effect">
+                        <a href="#"><img src="{% static 'assets/images/about-us/team/5.jpg' %}" alt="Our Team Member"></a>
+                    </div>
+                    <div class="team-content text-center">
+                        <h3>Mahi Patel</h3>
+                        <p>Web Designer</p>
+                        <a href="#">mahi@123gmail.com</a>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li class="youtube"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li class="instagram"><a href="https://rss.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="team-member" onmouseover="handleHover(this, 1.05)" onmouseout="handleHover(this, 1)">
+                    <div class="team-thumb img-hover_effect">
+                        <a href="#"><img src="{% static 'assets/images/about-us/team/6.jpg' %}" alt="Our Team Member"></a>
+                    </div>
+                    <div class="team-content text-center">
+                        <h3>Kinjal Prajapati</h3>
+                        <p>Web Designer</p>
+                        <a href="#">kd@123gmail.com</a>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li class="youtube"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li class="instagram"><a href="https://rss.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="team-member" onmouseover="handleHover(this, 1.05)" onmouseout="handleHover(this, 1)">
+                    <div class="team-thumb img-hover_effect">
+                        <a href="#"><img src="{% static 'assets/images/about-us/team/8.jpg' %}" alt="Our Team Member"></a>
+                    </div>
+                    <div class="team-content text-center">
+                        <h3>Hiten Prajapati</h3>
+                        <p>Web Designer</p>
+                        <a href="#">hitenp@123gmail.com</a>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook"><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li class="youtube"><a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li class="instagram"><a href="https://rss.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- More Members (Repeat structure for Edwin and Anny) -->
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

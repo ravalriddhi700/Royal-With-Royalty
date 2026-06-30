@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'shead.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'sheader.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'sleftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Subcategory Edit
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Subcategory Edit</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit Subcategory</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Category </label>
+                  <select class="form-control" name="cat_id">
+                    <option  value="">--Select--</option>
+                    {% for catdata in cat_data %}
+                        {% if catdata.0 == sub_data.0.1 %}
+                        <option  value="{{catdata.0}}" selected>{{catdata.1}}</option>
+                        {% else %}
+                        <option  value="{{catdata.0}}">{{catdata.1}}</option>
+                        {% endif %}
+
+                   {% endfor %}
+                  </select>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" value="{{sub_data.0.2}}" placeholder="Enter Subcategory Name" name="sub_name">
+                </div>
+               
+                <div class="form-group">
+                  <label for="exampleInputFile">Image</label>
+                  <br/>
+                        <img src="/media/{{sub_data.0.3}}" height="100px" width="100px" />
+                        <input type="hidden" name="old_img" class="form-control" value="{{sub_data.0.3}}" id="exampleInputPassword1" placeholder="Image">
+                        <br/>
+                  <input type="file" class="form-control" id="exampleInputFile" placeholder="Enter Subcategory Image"name="sub_image">
+
+                  
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <select class="form-control" name="sub_status">
+                    {% if sub_data.0.4 == 'Active' %}
+                    <option  value="Active" selected>Active</option>
+                    <option  value="Deactive">Deactive</option>
+                    {% else %}
+                    <option  value="Active">Active</option>
+                    <option  value="Deactive" selected>Deactive</option>
+                    {% endif %}
+                  </select>
+                  
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Change</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+         
+         
+
+        </div>
+
+      
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'sfooter.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'sscript.html' %}
+
+</body>
+</html>

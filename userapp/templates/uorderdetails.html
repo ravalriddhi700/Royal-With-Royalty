@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+<div class="hiraola-cart-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="javascript:void(0)">
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    
+                                    <th class="hiraola-product-thumbnail">ID</th>
+                                    <th class="cart-product-name">Product</th>
+                                    
+                                    <th class="cart-product-name">Category</th>
+                                    <th class="hiraola-product-price">Sub Category</th>
+                                    <th class="hiraola-product-price">Price</th>
+                                    <th class="hiraola-product-quantity">Quantity</th>
+                                    <th class="hiraola-product-subtotal">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for odata in od_data %}
+                                <tr>
+                                    <td class="hiraola-product-thumbnail"><a href="javascript:void(0)">{{odata.0}}</a></td>
+                                    <td class="hiraola-product-name"><a href="javascript:void(0)">
+                                        <img src="media/{{odata.16}}" alt="" style="height: 80px; width: 80px;"><br/>
+                                        {{odata.15}}
+                                    </a>                          
+                            </td>
+                                    <td class="hiraola-product-price"><span class="amount"> {{odata.28}}</span></td>
+                                    <td class="hiraola-product-price"><span class="amount"> {{odata.35}}</span></td>
+                                   
+                                    <td class="product-subtotal"><span class="amount"> ₹ {{odata.5}}</span></td>
+                                  
+                                    <td class="product-subtotal"><span class="amount">{{odata.6}}</span></td>
+                                    <td class="product-subtotal"><span class="amount"> ₹ {{odata.7}}</span></td>
+                              
+                                </tr>
+                               
+                                  {% endfor %}
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="coupon-all">
+                                
+                                <div class="coupon2">
+                                   <a href="uorder"> <input class="button" name="update_cart" value="Back To Order"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Hiraola's Product Area Two End Here -->
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+
+<!-- Begin Hiraola's Single Product Area -->
+<div class="sp-area">
+  <div class="container">
+      <div class="sp-nav">
+          <div class="row">
+              <div class="col-lg-5 col-md-5">
+                  <div class="sp-img_area">
+                      <div class="zoompro-border">
+                          <img class="zoompro" src="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}" alt="Hiraola's Product Image" />
+                      </div>
+                      <div id="gallery" class="sp-img_slider">
+                          <a class="active" data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                          <a data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                          <a data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                          <a data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                          <a data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                          <a data-image="/media/{{p_data.0.5}}" data-zoom-image="/media/{{p_data.0.5}}">
+                              <img src="/media/{{p_data.0.5}}" alt="Hiraola's Product Image">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-7 col-md-7">
+                  <div class="sp-content">
+                      <div class="sp-heading">
+                          <h5><a href="#">{{p_data.0.4}}</a></h5>
+                      </div>
+                      
+                      <div class="rating-box">
+                          <ul>
+                              <li><i class="fa fa-star-of-david"></i></li>
+                              <li><i class="fa fa-star-of-david"></i></li>
+                              <li><i class="fa fa-star-of-david"></i></li>
+                              <li><i class="fa fa-star-of-david"></i></li>
+                              <li class="silver-color"><i class="fa fa-star-of-david"></i></li>
+                          </ul>
+                      </div>
+                      <div class="sp-essential_stuff">
+                          <ul>
+                              <li>Price: <a href="javascript:void(0)"><span>₹{{p_data.0.6}} </span></a></li>
+                              <li>Size :{{p_data.0.10}} </li>
+                              <li>Color: {{p_data.0.11}}</li>
+                              <li>Material: {{p_data.0.12}}</li>
+                              <li>Availability: <a href="javascript:void(0)">In Stock</a></li>
+                          </ul>
+                      </div>
+                      
+                      
+                      <div class="qty-btn_area">
+                          <ul><li>
+                            {% if request.session.userid == None %}
+                              <a class="qty-cart_btn" href="usignin">Add To Cart</a>
+
+                              {% else %}
+                              <form method="post">
+                                  {% csrf_token %}
+                         
+                                <input type="hidden" name="o_total" value="{{p_data.0.6}}" />
+                                <input type="hidden" name="cat_id" value="{{p_data.0.16}}" />
+                                <input type="hidden" name="sub_id" value="{{p_data.0.31}}" />
+                                <input type="submit" class="qty-cart_btn" value="Add to Cart" style="background-color: black; color: white; height: 45px;" />
+                              </form>
+
+                            
+                            {% if msg != "" %}
+                              <br/>
+                              <div class="alert alert-danger">{{msg}}</div>
+                              {% endif %}
+                              {% endif %}
+                            </li>
+                              <li><a class="qty-wishlist_btn" href="wishlist.html" data-bs-toggle="tooltip" title="Add To Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                              <li><a class="qty-compare_btn" href="compare.html" data-bs-toggle="tooltip" title="Compare This Product"><i class="ion-ios-shuffle-strong"></i></a></li>
+                          </ul>
+                      </div>
+                      <div class="hiraola-tag-line">
+                          <h6>Tags:</h6>
+                          <a href="javascript:void(0)">{{p_data.0.17}}</a>,
+                          <a href="javascript:void(0)">{{p_data.0.33}}</a>
+                          
+                      </div>
+                      <div class="hiraola-social_link">
+                          <ul>
+                              <li class="facebook">
+                                  <a href="https://www.facebook.com/" data-bs-toggle="tooltip" target="_blank" title="Facebook">
+                                      <i class="fab fa-facebook"></i>
+                                  </a>
+                              </li>
+                              <li class="twitter">
+                                  <a href="https://twitter.com/" data-bs-toggle="tooltip" target="_blank" title="Twitter">
+                                      <i class="fab fa-twitter-square"></i>
+                                  </a>
+                              </li>
+                  
+                              
+                              <li class="instagram">
+                                  <a href="https://www.instagram.com/accounts/login/" data-bs-toggle="tooltip" target="_blank" title="Instagram">
+                                      <i class="fab fa-instagram"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Hiraola's Single Product Area End Here -->
+
+<!-- Begin Hiraola's Single Product Tab Area -->
+<div class="hiraola-product-tab_area-2 sp-product-tab_area">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="sp-product-tab_nav ">
+                  <div class="product-tab">
+                      <ul class="nav product-menu">
+                          <li><a class="active" data-bs-toggle="tab" href="#description"><span>Description</span></a>
+                          </li>
+                          <li><a data-bs-toggle="tab" href="#specification"><span>Disclaminer</span></a></li>
+                       
+                      </ul>
+                  </div>
+                  <div class="tab-content hiraola-tab_content">
+                      <div id="description" class="tab-pane active show" role="tabpanel">
+                          <div class="product-description">
+                              <ul>
+                                  <li>
+                                     
+                                      <span>{{p_data.0.8}}</span>
+                                  </li>
+                                  
+                                  
+
+                              </ul>
+                          </div>
+                      </div>
+                      <div id="specification" class="tab-pane" role="tabpanel">
+                        <ul>
+                          <li>
+                             
+                              <span>{{p_data.0.9}}</span>
+                          </li>
+                          
+                          
+
+                      </ul>
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Hiraola's Single Product Tab Area End Here -->
+<!-- Begin Hiraola's Product Area Two -->
+<div class="hiraola-product_area hiraola-product_area-2 section-space_add">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+
+              <div class="hiraola-section_title">
+                  <h4>Related Products</h4>
+              </div>
+
+          </div>
+          <div class="col-lg-12">
+              <div class="hiraola-product_slider-3">
+
+                  <!-- Begin Hiraola's Slide Item Area -->
+                  {% for reldata in rdata %}
+                  <div class="slide-item">
+                      <div class="single_product">
+                          <div class="product-img">
+                              <a href="uproductdetails?pid={{reldata.0}}">
+                                  <img class="primary-img" src="/media/{{reldata.5}}" alt="Hiraola's Product Image">
+                                  <img class="secondary-img" src="/media/{{reldata.5}}" alt="Hiraola's Product Image">
+                              </a>
+                              <span class="sticker-2">{{reldata.17}}</span>
+                              <div class="add-actions">
+                                  <ul>
+                                      <li><a class="hiraola-add_cart" href="uproductdetails?pid={{reldata.0}}" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                      </li>
+                                      
+                                  </ul>
+                              </div>
+                          </div>
+                          <div class="hiraola-product_content">
+                              <div class="product-desc_info" style="padding-top: 10px;">
+                                  <h6><a class="product-name" href="uproductdetails?pid={{reldata.0}}">{{reldata.4}}</a></h6>
+                                  <div class="price-box">
+                                      <span class="new-price">₹ {{reldata.6}}</span>
+                                  </div>
+                                 
+                                  <div class="rating-box">
+                                      <ul>
+                                          <li><i class="fa fa-star-of-david"></i></li>
+                                          <li><i class="fa fa-star-of-david"></i></li>
+                                          <li><i class="fa fa-star-of-david"></i></li>
+                                          <li><i class="fa fa-star-of-david"></i></li>
+                                          <li class="silver-color"><i class="fa fa-star-of-david"></i></li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {% endfor %}
+                  <!-- Hiraola's Slide Item Area End Here -->
+                  
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Hiraola's Product Area Two End Here -->
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

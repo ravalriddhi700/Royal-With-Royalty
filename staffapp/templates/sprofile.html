@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'shead.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'sheader.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'sleftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Your Profile
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Your Profile</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title"> Your Profile</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputFile">Image</label>
+                  <br/>
+                        <img src="/media/{{s_data.0.4}}" height="80px" width="80px" style="border-radius: 50% ; border: 3px solid #000;" />
+                        <input type="hidden" name="old_img" class="form-control" value="{{s_data.0.4}}" id="exampleInputPassword1" placeholder="Image">
+                        <br/>
+                  <input type="file" class="form-control" id="exampleInputFile" name="s_image">
+
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"> Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" value="{{s_data.0.1}}" placeholder="Enter Name" name="s_name">
+                </div>
+                
+                  
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Contact</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" value="{{s_data.0.3}}" placeholder="Enter Contact" name="s_contact" readonly>
+                    </div>
+                    
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Password</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{s_data.0.5}}" placeholder="Enter password" name="s_password">
+                      </div>
+
+                   
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Address</label>
+                        <textarea class="form-control" id="exampleInputEmail1" placeholder="Enter address" name="s_address">{{s_data.0.2}}</textarea>
+                      </div>
+                   
+              
+              <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" name="s_status">
+                  {% if s_data.0.6 == 'Active' %}
+                  <option  value="Active" selected>Active</option>
+                  <option  value="Deactive">Deactive</option>
+                  {% else %}
+                  <option  value="Active">Active</option>
+                  <option  value="Deactive" selected>Deactive</option>
+                  {% endif %}
+                </select>
+                
+              </div>
+            </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Change</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--<div class="col-md-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">View Staff Details</h3>
+          </div>
+           /.box-header 
+          <div class="box-body">-->
+            <!--<table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contact</th>
+                <th>Image</th>
+                <th>Password</th>
+                <th>Status</th>
+                <th>Create Date</th>
+                <th>Update Date</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+                {% for row in s_data %}    
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="center">{{row.1}}</td>
+                    <td class="center">{{row.2}}</td>
+                    <td class="center">{{row.3}}</td>
+
+                    <td class="center"><img src="/media/{{row.2}}" height="50px" width="50px" /></td>
+                    <td class="center">{{row.5}}</td>
+                    <td class="center">
+                      <a  href="/adminapp/staff?s_id={{row.0}}&s_status={{row.6 }}">
+                        {% if row.6 == 'Active' %}
+                        <span class="label-success label label-default">{{row.6}}</span>
+                        {% else %}
+                        <span class="label-danger label label-default">{{row.6}}</span>
+                        {% endif %}
+                      </a>
+                    </td>
+                    <td class="center">{{row.7|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">{{row.8|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">
+                       
+                      
+                      <a class="btn btn-danger" href="/adminapp/staff?s_del={{row.0}}" onclick="return confirm('Are you sure you want to Delete..?');">
+                          <i class="glyphicon glyphicon-trash icon-white"></i>
+                          Delete
+                      </a>
+                  </td>
+                </tr>
+                {% endfor %}
+      
+              </tbody>
+              
+            </table>-->
+          </div>
+          <!-- /.box-body -->
+        </div>
+        
+       </div>
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'sfooter.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'sscript.html' %}
+
+</body>
+</html>

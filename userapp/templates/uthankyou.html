@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+        <!-- Header -->
+        {% include 'uheader.html' %}
+
+        <!-- Fireworks Canvas -->
+        <canvas id="fireworksCanvas"></canvas>
+
+        <!-- Thank You Section -->
+        <div class="thank-you-container">
+            <div class="thank-you-box">
+                <h1>🎉 Thank You for Your Purchase! 🎉</h1>
+                <p>Your payment was successful, and your order is now being processed.</p>
+
+                <div class="order-status">
+                    <div class="truck">🚚</div>
+                    <p class="delivery-text">Your order is on the way!</p>
+                </div>
+
+                <a href="/" class="back-home-btn">Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        {% include 'ufooter.html' %}
+    </div>
+
+    {% include 'uscript.html' %}
+
+    <style>
+        /* Fireworks Canvas */
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Thank You Page Styling */
+        .thank-you-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            background: linear-gradient(135deg, #f7e3e8, #ffe4e1, #fadadd);
+            position: relative;
+            z-index: 10;
+            padding: 50px 20px;
+            border-radius: 15px;
+        }
+
+        .thank-you-box {
+            background: rgba(183, 110, 121, 0.9); /* Soft #b76e79 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(183, 110, 121, 0.5);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        /* Order on the way animation */
+        .order-status {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .truck {
+            font-size: 50px;
+            animation: moveTruck 2s infinite;
+        }
+
+        .delivery-text {
+            margin-top: 10px;
+            animation: fadeIn 2s infinite alternate;
+        }
+
+        /* Button */
+        .back-home-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #b76e79;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 18px;
+            border: 2px solid white;
+        }
+
+        .back-home-btn:hover {
+            background: #a15d6a;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes moveTruck {
+            0% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(-10px); }
+        }
+    </style>
+
+    <!-- Fireworks JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById("fireworksCanvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Firework {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.particles = [];
+
+                    for (let i = 0; i < 70; i++) {  // Increased number of particles
+                        this.particles.push(new Particle(this.x, this.y, this.color));
+                    }
+                }
+
+                draw() {
+                    this.particles.forEach(particle => particle.draw());
+                }
+
+                update() {
+                    this.particles.forEach(particle => particle.update());
+                }
+            }
+
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.size = Math.random() * 4 + 1;
+                    this.speedX = (Math.random() - 0.5) * 6;
+                    this.speedY = (Math.random() - 0.5) * 6;
+                    this.alpha = 1;
+                }
+
+                draw() {
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.alpha -= 0.02;
+                }
+            }
+
+            const fireworks = [];
+
+            function createFirework() {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height / 2;
+                const colors = ["#b76e79", "#ffb6c1", "#fadadd", "#ffe4e1"];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                fireworks.push(new Firework(x, y, color));
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                fireworks.forEach((firework, index) => {
+                    firework.update();
+                    firework.draw();
+
+                    if (firework.particles[0].alpha <= 0) {
+                        fireworks.splice(index, 1);
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            setInterval(createFirework, 400); // Faster fireworks
+            animate();
+
+            window.addEventListener("resize", () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        });
+    </script>
+
+</body>
+</html>

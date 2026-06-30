@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        {% include 'uheader.html' %}
+        {% include 'ubanner.html' %}
+
+        <!-- Start Order History Section -->
+        <div class="hiraola-cart-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="order-title">My Orders</h2>
+                        <form action="javascript:void(0)">
+                            <div class="table-content table-responsive">
+                                <table class="table order-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Action</th>
+                                            <th>ID</th>
+                                            <th>Pin Code</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>Shipping Address</th>
+                                            <th>Status</th>
+                                            <th>Created Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for odata in cart_data %}
+                                        <tr>
+                                            <td>
+                                                {% if odata.8 == 'Pending' %}
+                                                <a href="/uorder?oid={{odata.0}}" class="cancel-btn" onclick="return confirm('Are you sure you want to cancel..?');">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                                {% endif %}
+                                                <a href="/uorderdetails?oid={{odata.0}}" class="details-btn">
+                                                    <i class="fa fa-info-circle"></i>
+                                                </a>
+                                            </td>
+                                            <td>{{odata.0}}</td>
+                                            <td>{{odata.4}}</td>
+                                            <td>{{odata.5}}</td>
+                                            <td>₹ {{odata.6}}</td>
+                                            <td>{{odata.7}}</td>
+                                            <td class="{% if odata.8 == 'Pending' %}pending-status{% elif odata.8 == 'Shipped' %}shipped-status{% elif odata.8 == 'Delivered' %}delivered-status{% else %}cancelled-status{% endif %}">
+                                                {{odata.8}}
+                                            </td>
+                                            <td>{{odata.9|date:'Y-m-d'}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Order History Section -->
+
+        {% include 'ufooter.html' %}
+    </div>
+
+    {% include 'uscript.html' %}
+
+    <style>
+        /* Order Page Styling */
+        .order-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: #c06c84;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styling */
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-table thead {
+            background: linear-gradient(to right, #fdeef2, #fff7f3);
+            color: #c06c84;
+            text-transform: uppercase;
+        }
+
+        .order-table th, .order-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .order-table tr:hover {
+            background: #fff4f8;
+            transition: 0.3s;
+        }
+
+        /* Status Badges */
+        .pending-status {
+            color: #e67e22;
+            font-weight: bold;
+        }
+        .shipped-status {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .delivered-status {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .cancelled-status {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        /* Action Buttons */
+        .cancel-btn {
+            color: #e74c3c;
+            font-size: 18px;
+            margin-right: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        .cancel-btn:hover {
+            color: #c0392b;
+            transform: scale(1.1);
+        }
+
+        .details-btn {
+            color: #3498db;
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+        }
+        .details-btn:hover {
+            color: #2980b9;
+            transform: scale(1.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .order-table thead {
+                display: none;
+            }
+            .order-table tr {
+                display: block;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                padding: 10px;
+            }
+            .order-table td {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                font-size: 14px;
+            }
+            .order-table td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #c06c84;
+            }
+        }
+    </style>
+
+</body>
+</html>

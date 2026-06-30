@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Secure Payment - Royal With Loyalty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    
+    <!-- Styles -->
+    <link href="{% static 'payment/css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="{% static 'payment/js/jquery.min.js' %}"></script>
+
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1e1e1e;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .payment-container {
+            background: #121212;
+            color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(255, 215, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            font-size: 14px;
+            color: #c0c0c0;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #555;
+            background: #222;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .input-group input:focus {
+            border-color: gold;
+            outline: none;
+            box-shadow: 0px 0px 5px gold;
+        }
+
+        /* Expiry Date & CVV */
+        .expiry-cvv {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .expiry-cvv .input-group {
+            width: 48%;
+        }
+
+        /* Submit Button */
+        .pay-btn {
+            width: 100%;
+            padding: 12px;
+            background: gold;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .pay-btn:hover {
+            background: #d4af37;
+            box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Success Message Animation */
+        .success-message {
+            display: none;
+            padding: 15px;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <h1>Complete Your Payment</h1>
+        
+        <form id="payment-form">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label>Cardholder Name</label>
+                <input type="text" placeholder="Enter Name on Card" required pattern="[A-Za-z\s]+" title="Please enter a valid name">
+            </div>
+
+            <div class="input-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" required pattern="\d{16,16}" title="Enter a valid 16-digit card number">
+            </div>
+
+            <div class="expiry-cvv">
+                <div class="input-group">
+                    <label>Expiry Month</label>
+                    <input type="number" min="1" max="12" placeholder="MM" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Expiry Year</label>
+                    <input type="number" min="2024" placeholder="YYYY" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>CVV</label>
+                <input type="password" placeholder="***" required pattern="\d{3,3}" title="Enter a 3-digit CVV">
+            </div>
+
+            <button type="submit" class="pay-btn">PAY NOW</button>
+        </form>
+
+        <div id="payment-success" class="success-message">
+            ✅ Payment Successfully Done!
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("payment-form");
+    
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent actual form submission
+    
+                // Show success message
+                document.getElementById("payment-success").style.display = "block";
+    
+                // Redirect to thank-you page after 3 seconds
+                setTimeout(() => {
+                    window.location.href = "{% url 'uthankyou' %}";  // Correct Django URL routing
+                }, 3000);
+            });
+        });
+    </script>
+    
+
+</body>
+</html>

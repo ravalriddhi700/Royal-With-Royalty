@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'shead.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'sheader.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'sleftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Category Edit
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Category Edit</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Edit Category</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Category Name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" value="{{cat_data.0.1}}" placeholder="Enter Category Name" name="cat_name">
+                </div>
+               
+                <div class="form-group">
+                  <label for="exampleInputFile">Category Image</label>
+                  <br/>
+                        <img src="/media/{{cat_data.0.2}}" height="50px" width="50px" />
+                        <input type="hidden" name="old_img" class="form-control" value="{{cat_data.0.2}}" id="exampleInputPassword1" placeholder="Image">
+                        <br/>
+                  <input type="file" class="form-control" id="exampleInputFile" name="cat_image">
+
+                  
+                </div>
+                <div class="form-group">
+                  <label>Category Status</label>
+                  <select class="form-control" name="cat_status">
+                    {% if cat_data.0.3 == 'Active' %}
+                    <option value="Active" selected>Active</option>
+                    <option value="Deactive">Deactive</option>
+                    {% else %}
+                    <option value="Active">Active</option>
+                    <option value="Deactive" selected>Deactive</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Change</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+         
+         
+
+        </div>
+
+    
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'sfooter.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'sscript.html' %}
+
+</body>
+</html>

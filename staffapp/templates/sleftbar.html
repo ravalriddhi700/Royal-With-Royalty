@@ -1,0 +1,136 @@
+{% load static %}
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src='/media/{{request.session.simg}}' class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{request.session.sname}}</p>
+         
+        </div>
+      </div>
+      <!-- search form -->
+  
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+     
+        <li class="active">
+          <a href="/staffapp">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+         
+          </a>
+         
+        </li>
+        <li>
+          <a href="/staffapp/sprofile">
+            <i class="fa  fa-user"></i>
+            <span>Profile</span>
+          
+          </a>
+     
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Order</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/staffapp/spendingorder"><i class="fa fa-hourglass-half"></i> Pending</a></li>
+            <li><a href="/staffapp/sconfirmorder"><i class="fa fa-thumbs-up"></i> Confirm</a></li>
+            <li><a href="/staffapp/scompleteorder"><i class="fa fa-check-square"></i> Complete</a></li>
+            <li><a href="/staffapp/scancelorder"><i class="fa  fa-times"></i> Cancel</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/staffapp/spayment">
+            <i class="fa  fa-credit-card"></i>
+            <span>Payment</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/suser">
+            <i class="fa fa-user-circle-o"></i>
+            <span>User</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/sstaff">
+            <i class="fa fa-users"></i>
+            <span>Staff</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/sfeedback">
+            <i class="fa fa-comments"></i>
+            <span>Feedback</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/sproduct">
+            <i class="fa fa-th"></i>
+            <span>Product</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/ssubcategory">
+            <i class="fa fa-th-large"></i>
+            <span>Subcategory</span>
+          
+          </a>
+     
+        </li>
+        <li>
+          <a href="/staffapp/scategory">
+            <i class="fa fa-bars"></i>
+            <span>Category</span>
+          
+          </a>
+     
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Report</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/staffapp/sorderreport"><i class="fa fa-circle-o"></i> Order</a></li>
+            
+            
+            <li><a href="/staffapp/spaymentreport"><i class="fa fa-circle-o"></i> Payment</a></li>
+            
+          </ul>
+        </li>
+
+        <li>
+          <a href="/staffapp/slogout">
+            <i class="fa  fa-power-off"></i>
+            <span>Logout</span>
+          
+          </a>
+     
+        </li>
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>

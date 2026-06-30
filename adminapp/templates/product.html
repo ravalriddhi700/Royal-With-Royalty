@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'head.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'header.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'leftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Product
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Product</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        
+        <div class="col-md-12">
+        <div class="box" style="overflow-x: auto">
+          <div class="box-header" >
+            <h3 class="box-title">View Product Details</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Staff</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Offerprice</th>
+                <th>Details</th>
+                <th>Disclamier</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Action</th>
+                
+              </tr>
+              </thead>
+              <tbody>
+                {% for row in p_data %}    
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="center">{{row.17}}</td>
+                    <td class="center">{{row.33}}</td>
+                    <td class="center">{{row.23}}</td>
+                    <td class="center">{{row.4}}</td>
+                    <td class="center">{{row.5}}<img src="/media/{{row.5}}" height="50px" width="50px" /></td>
+                    <td class="center">  ₹ {{row.6}}</td>
+                    <td class="center">  ₹ {{row.7}}</td>
+                    <td class="center">{{row.8}}</td>
+                    <td class="center">{{row.9}}</td>
+                    <td class="center">{{row.10}}</td>
+                    <td class="center">{{row.11}}</td>
+                    <td class="center">{{row.12}}</td>
+
+                    <td class="center">
+                      <a  href="/adminapp/product?p_id={{row.0}}&p_status={{row.13 }}">
+                        {% if row.13 == 'Active' %}
+                        <span class="label-success label label-default">{{row.13}}</span>
+                        {% else %}
+                        <span class="label-danger label label-default">{{row.13}}</span>
+                        {% endif %}
+                      </a>
+                    </td>
+                    
+                    <td class="center">{{row.14|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">{{row.15|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">
+                       
+                      
+                      <a class="btn btn-danger" href="/adminapp/product?p_del={{row.0}}" onclick="return confirm('Are you sure you want to Delete..?');">
+                          <i class="glyphicon glyphicon-trash icon-white"></i>
+                          Delete
+                      </a>
+                  </td>
+                    
+                </tr>
+                {% endfor %}
+      
+              </tbody>
+              
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        
+       </div>
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'footer.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'script.html' %}
+
+</body>
+</html>

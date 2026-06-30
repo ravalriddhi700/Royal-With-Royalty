@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'head.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'header.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'leftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Cart Details
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Cart</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+       
+        <!-- /.box-header -->
+        <!-- form start -->
+     
+            
+            <!--<div class="box-header well" data-original-title="">
+              <h2><i class="glyphicon glyphicon-edit"></i> Payment Report</h2>
+
+              
+          </div>-->
+          <br/>
+          <div class="box-content">
+              <form role="form" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group col-md-3">
+                      <label for="exampleInputEmail1">Staff</label>
+                      <select class="form-control" name="s_id">
+                        <option  value="">--Select--</option>
+                        {% for sdata in s_data %}
+                        {% if sdata.0 == c_data.0.42 %}
+                        <option  value="{{sdata.0}}" selected>{{sdata.1}} | {{sdata.3}}</option>
+                        {% else %}
+                        <option  value="{{sdata.0}}">{{sdata.1}} | {{sdata.3}}</option>
+                        {% endif %}
+                        {% endfor %}
+                      </select>
+                  </div>
+
+                 
+                  <div class="form-group  col-md-1">
+                  <label for="exampleInputEmail1">&nbsp;</label>
+                  <button type="submit" class="btn btn-primary">Change</button>
+                  </div>
+
+               
+                 
+              </form>
+              <br/><br/><br/><br/>
+          </div>
+
+      </div>
+      <!-- /.box -->
+
+     
+
+    </div>
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        
+        <div class="col-md-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">View Cart Details</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Order</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Totalprice</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+              
+              </tr>
+              </thead>
+              <tbody>
+                {% for row in c_data %}    
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="center">{{row.1}}</td>
+                    <td class="center">{{row.12}}</td>
+                    <td class="center">{{row.19}}</td>
+                    <td class="center">{{row.28}}</td>
+                    <td class="center"><img src="/media/{{row.29}}" height="50px" width="50px" /></td>
+                    <td class="center"> ₹ {{row.5}}</td>
+                    <td class="center">{{row.6}}</td>
+                    <td class="center">  ₹ {{row.7}}</td>
+
+                    <td class="center">
+                   
+                        {% if row.8 == 'Active' %}
+                        <span class="label-success label label-default">{{row.8}}</span>
+                        {% else %}
+                        <span class="label-danger label label-default">{{row.8}}</span>
+                        {% endif %}
+                    
+                    </td>
+                    
+                    <td class="center">{{row.9|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">{{row.10|date:'Y-m-d H:i:s'}}</td>
+                   
+                    
+                </tr>
+                {% endfor %}
+      
+              </tbody>
+              
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        
+       </div>
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'footer.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'script.html' %}
+
+</body>
+</html>

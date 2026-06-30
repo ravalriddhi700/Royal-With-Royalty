@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+
+<div class="hiraola-content_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 order-2 order-lg-1">
+                <div class="hiraola-sidebar-catagories_area">
+                 
+                    <div class="hiraola-sidebar_categories">
+                        <div class="hiraola-categories_title">
+                            <h5>Category</h5>
+                        </div>
+                        <ul class="sidebar-checkbox_list">
+                            {% for cdata in cat_data %}
+                            <li>
+                                <a href="/uproduct?cat_id={{cdata.0}}">{{cdata.1}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="hiraola-sidebar_categories">
+                        <div class="hiraola-categories_title">
+                            <h5>Sub Category</h5>
+                        </div>
+                        <ul class="sidebar-checkbox_list">
+                            {% for sdata in sub_data %}
+                            <li>
+                                <a href="/uproduct?sub_id={{sdata.0}}">{{sdata.2}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="sidebar-banner_area">
+                    <div class="banner-item img-hover_effect">
+                        <a href="javascript:void(0)">
+                            <img src="static/assets/images/banner/1_1.jpg" alt="Hiraola's Shop Banner Image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+               
+                <div class="shop-product-wrap grid gridview-3 row">
+                    {% for pdata in p_data %}
+                    <div class="col-lg-4">
+                        <div class="slide-item">
+                            <div class="single_product" style="
+                            height: 355px;
+                        ">
+                                <div class="product-img">
+                                    <a href="uproductdetails?pid={{pdata.0}}">
+                                        <img class="primary-img" src="/media/{{pdata.5}}" alt="Hiraola's Product Image">
+                                        <img class="secondary-img" src="/media/{{pdata.5}}" alt="Hiraola's Product Image">
+                                    </a>
+                                    <div class="add-actions">
+                                        <ul>
+                                            <li><a class="hiraola-add_cart" href="uproductdetails?pid={{pdata.0}}" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="ion-bag"></i></a>
+                                            </li>
+                                          
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="hiraola-product_content">
+                                    <div class="product-desc_info"><br/>
+                                        <h6><a class="product-name" href="uproductdetails?pid={{pdata.0}}">{{pdata.4}}</a></h6>
+                                    
+                                        <h6><a class="product-category" href="uproductdetails?pid={{pdata.0}}">Sub Category : {{pdata.33}}</a></h6>
+                                        <div class="price-box">
+                                            <span class="new-price">₹ {{pdata.6}}</span>
+                                        </div>
+                                        <div class="additional-add_action">
+                                            <ul>
+                                                <li><a class="hiraola-add_cart" href="uproductdetails?pid={{pdata.0}}" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart">Add To Cart</a></li>
+                                          
+                                            </ul>
+                                        </div>
+                                        <div class="rating-box">
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-slide_item">
+                            <div class="single_product">
+                                <div class="product-img">
+                                    <a href="single-product.html">
+                                        <img class="primary-img" src="assets/images/product/medium-size/1-9.jpg" alt="Hiraola's Product Image">
+                                        <img class="secondary-img" src="assets/images/product/medium-size/1-8.jpg" alt="Hiraola's Product Image">
+                                    </a>
+                                </div>
+                                <div class="hiraola-product_content">
+                                    <div class="product-desc_info">
+                                        <h6><a class="product-name" href="single-product.html">Flash Furniture
+                                                Alonza Se...</a></h6>
+                                 
+                                     
+                                    </div>
+                                    <div class="add-actions">
+                                        <ul>
+                                            <li><a class="hiraola-add_cart" href="cart.html" data-bs-toggle="tooltip" data-placement="top" title="Add To Cart">Add To Cart</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

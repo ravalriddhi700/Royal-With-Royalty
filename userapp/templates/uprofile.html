@@ -1,0 +1,114 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+<style>
+    .login-form input, .login-form textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
+    line-height: 23px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 15px;
+    
+}
+</style>
+
+<div class="hiraola-login-register_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                <!-- Login Form s-->
+                <img class="img-full" src="/media/{{u_data.0.4}}"  height="40px" width="20px" style="border-radius: 50% ; " alt="Hiraola's About Us Image">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <div class="login-form">
+                        <h4 class="login-title">Profile</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb--20">
+                                <label>Name</label>
+                                <input type="text" name="u_name" value="{{u_data.0.1}}" placeholder="Enter Name">
+                            </div>
+                            <div class="col-md-6 col-12 mb--20">
+                                <label>Contact</label>
+                                <input type="text" readonly name="u_contact" value="{{u_data.0.2}}" placeholder="Enter Contact">
+                            </div>
+                            <div class="col-md-12">
+                                <label>Image</label>
+                                
+                                
+                                <input  type="hidden" name="old_img" class="form-control"  value="{{u_data.0.4}}" id="exampleInputPassword1" placeholder="Image">
+                                <input type="file" name="u_img"  placeholder="Enter Image" >
+
+                            </div>
+                            <div class="col-md-12">
+                                <label>Address*</label>
+                                <textarea placeholder="Enter Address"  name="u_address">{{u_data.0.3}}</textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Password</label>
+                                <input type="text" placeholder="Password" value="{{u_data.0.5}}" name="u_password" id="myInput">
+                            </div>
+                           
+                            <div class="col-12">
+                                <button class="hiraola-register_btn" type="submit">Change</button>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>		
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

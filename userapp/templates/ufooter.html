@@ -1,0 +1,136 @@
+{% load static %}
+
+<div class="hiraola-footer_area">
+    <div class="footer-top_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-widgets_info">
+
+                        <div class="footer-widgets_logo">
+                            <a href="#">
+                                <img src="/media/logo2.png" style="width: 100px; height: 70px; border-radius: 10%;" alt="Hiraola's Footer Logo">
+                            </a>
+                        </div>
+
+                        <div class="widget-short_desc">
+                            <p>At Royal With Loyalty, we craft timeless jewelry pieces that blend royal elegance with a commitment to trust and quality. Our collection is a reflection of sophistication and craftsmanship, designed to celebrate your most cherished moments. 
+                            </p>
+                        </div>
+                        <div class="hiraola-social_link">
+                            <ul>
+                                <li class="facebook">
+                                    <a href="https://www.facebook.com/" data-bs-toggle="tooltip" target="_blank" title="Facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="https://twitter.com/" data-bs-toggle="tooltip" target="_blank" title="Twitter">
+                                        <i class="fab fa-twitter-square"></i>
+                                    </a>
+                                </li>
+                               
+                                <li class="instagram">
+                                    <a href="https://www.instagram.com/accounts/login/" data-bs-toggle="tooltip" target="_blank" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="footer-widgets_area">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="footer-widgets_title">
+                                    <h6>Useful Link</h6>
+                                </div>
+                                <div class="footer-widgets">
+                                    {% if request.session.userid == None %}
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="usignup">User Sign Up</a></li>
+                                        <li><a href="uterms">Terms & Conditions</a></li>
+                                       
+                                    </ul>
+                                    {% else %}
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="uprofile">Profile</a></li>
+                                        <li><a href="uproduct">Product</a></li>
+                                        <li><a href="usignout">Logout</a></li>  
+                                        
+                                       
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="footer-widgets_title">
+                                    <h6>Accounts</h6>
+                                </div>
+                                <div class="footer-widgets">
+                                    {% if request.session.userid == None %} 
+                                    <ul>
+                                        <li><a href="staffapp/slogin">Staff Sign In</a></li>
+                                        <li><a href="usignup">User Sign In</a></li>
+                                        <li><a href="uproduct">Products</a></li>
+                                        <li><a href="uabout">About Us</a></li>
+                                        <li><a href="ucontact">Contact Us</a></li>
+                                       
+                                    </ul>
+                                    {% else %}
+                                    <ul>
+                                        <li><a href="ucart">My Cart</a></li>
+                                        <li><a href="uorder">My Order</a></li>
+                                        <li><a href="uabout">About Us</a></li>
+                                        <li><a href="ucontact">Contact Us</a></li>
+                                        <li><a href="uterms">Terms & Conditions</a></li>
+                                       
+                                    </ul>
+                                   
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="footer-widgets_info">
+                                    <div class="footer-widgets_title">
+                                        <h6>Get In Touch</h6>
+                                    </div>
+                                    <div class="widgets-essential_stuff">
+                                        <ul>
+                                            <li class="hiraola-address"><i
+                                            class="ion-ios-location"></i><span>Address:</span> BHOLABHAI PATEL COLLEGE OF COMPUTER STUDIES BCA BPCCS-BCA Kadi Sarva Vishwavidyalaya, GH Rd, Sector 23, Gandhinagar, Gujarat 382023</li>
+                                            <li class="hiraola-phone"><i class="ion-ios-telephone"></i><span>Call
+                                            Us:</span> <a href="tel: 070963 08000"> 070963 08000</a>
+                                            </li>
+                                            <li class="hiraola-email"><i
+                                            class="ion-android-mail"></i><span>Email:</span> <a href="mailto:info@ksv.ac.in">info@ksv.ac.in</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom_area">
+        <div class="container">
+            <div class="footer-bottom_nav">
+                <div class="row">
+                  
+                    
+                    <div class="col-lg-12">
+                        <div class="copyright">
+                            <span>Copyright &copy; 2024 - 2025 <a href="/">Royal With Loyalty.</a> All rights reserved.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

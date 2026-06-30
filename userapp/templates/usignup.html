@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{% load static %}
+{% include 'uhead.html' %}
+
+<body class="template-color-3">
+
+    <div class="main-wrapper">
+
+        <!-- Begin Hiraola's Header Main Area Three -->
+        {% include 'uheader.html' %}
+        <!-- Hiraola's Header Main Area Three End Here -->
+
+       
+        {% include 'ubanner.html' %}
+
+<!--start-->
+<style>
+    .login-form input, .login-form textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
+    line-height: 23px;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #888888;
+    margin-bottom: 15px;
+}
+</style>
+
+<div class="hiraola-login-register_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
+                <!-- Login Form s-->
+                <img class="img-full" src="{% static 'assets/images/about-us/3.png' %}" alt="Hiraola's About Us Image">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <form method="post" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    <div class="login-form">
+                        <h4 class="login-title">Register</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-12 mb--20">
+                                <label>Name</label>
+                                <input type="text" name="u_name" placeholder="Enter Name" required pattern="[A-Za-z\s]+" title="Please Enter Valid Name.">
+                            </div>
+                            <div class="col-md-6 col-12 mb--20">
+                                <label>Contact</label>
+                                <input type="text" name="u_contact" placeholder="Enter Contact" maxlength="10" pattern="[0-9]{10}" title="Ex.9876543210" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Image</label>
+                                <input type="file" name="u_img" placeholder="Enter Image" accept="image/png,image/gif,image/jpeg,image/jpg" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Address*</label>
+                                <textarea placeholder="Enter Address" name="u_address" required></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Password</label>
+                                <input type="password" placeholder="Password" name="u_password" id="myInput" required>
+                                <div style="margin-top: 10px; float: left;"><input type="checkbox" onclick="myFunction()">Show Password</div>
+                            </div>
+                           
+                            <div class="col-12">
+                                <button class="hiraola-register_btn" type="submit">Register</button>
+                            </div>
+                            <p>You Already have account? <a href="/usignin"> click here</p>
+                        </div>
+                        {% if msg != "" %}
+                        <br/>
+                            <div class="alert alert-danger">{{msg}}</div>
+                            {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>		
+<!--end-->
+        <!-- Begin Hiraola's Footer Area -->
+        {% include 'ufooter.html' %}
+        <!-- Hiraola's Footer Area End Here -->
+        <!-- Begin Hiraola's Modal Area -->
+    
+        <!-- Hiraola's Modal Area End Here -->
+
+    </div>
+
+    <!-- JS
+============================================ -->
+
+    <!-- jQuery JS -->
+    {% include 'uscript.html' %}
+
+</body>
+
+</html>

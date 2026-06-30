@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+{% load static %}
+{% include 'head.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'header.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'leftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Payment
+        
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Payment</li>
+      </ol>
+    </section>
+    <!-- Content start -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        
+        <div class="col-md-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">View Payment Details</h3>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Order</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Action</th>
+                
+                
+              </tr>
+              </thead>
+              <tbody>
+                {% for row in p_data %}    
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td class="center">{{row.1}}</td>
+                    <td class="center">  ₹ {{row.2}}</td>
+                    
+                    <td class="center">
+                      <a  href="/adminapp/payment?p_id={{row.0}}&p_status={{row.3 }}">
+                        {% if row.3 == 'Success' %}
+                        <span class="label-success label label-default">{{row.3}}</span>
+                        {% else %}
+                        <span class="label-danger label label-default">{{row.3}}</span>
+                        {% endif %}
+                      </a>
+                    </td>
+                    
+                    <td class="center">{{row.4|date:'Y-m-d H:i:s'}}</td>
+                    <!--<td class="center">{{row.5|date:'Y-m-d H:i:s'}}</td>-->
+                    <td class="center">
+                       
+                      
+                      <a class="btn btn-danger" href="/adminapp/payment?p_del={{row.0}}" onclick="return confirm('Are you sure you want to Delete..?');">
+                          <i class="glyphicon glyphicon-trash icon-white"></i>
+                          Delete
+                      </a>
+                  </td>
+                </tr>
+                {% endfor %}
+      
+              </tbody>
+              
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        
+       </div>
+      </div>
+       </section>
+
+
+    
+    <!-- /.content end -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'footer.html' %}
+  <!-- Control Sidebar -->
+ 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'script.html' %}
+
+</body>
+</html>

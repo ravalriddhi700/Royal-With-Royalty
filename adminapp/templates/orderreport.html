@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+
+{% load static %}
+{% include 'head.html' %}
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+  {% include 'header.html' %}
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  {% include 'leftbar.html' %}
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Order Report
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Order Report</li>
+      </ol>
+    </section>
+    <script type="text/javascript">
+
+      function sprint() {
+          var divToPrint = document.getElementById('example1');
+          var htmlToPrint = '<style type="text/css"> table,table th, table td { border:1px solid #000; border-collapse: collapse; } </style>';
+          htmlToPrint += divToPrint.outerHTML;
+          newWin = window.open("");
+          newWin.document.write(htmlToPrint);
+          newWin.print();
+          newWin.close();
+          //newWin.window.print();
+      }
+      </script>
+    <!-- Main content -->
+    <!--start-->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+       
+        <!-- /.box-header -->
+        <!-- form start -->
+     
+            
+            <!--<div class="box-header well" data-original-title="">
+              <h2><i class="glyphicon glyphicon-edit"></i> Order Report</h2>
+
+              
+          </div>-->
+          <div class="box-content">
+              <form role="form" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-group col-md-3">
+                      <label for="exampleInputEmail1">Start Date</label>
+                      <input type="date" name="s_date" class="form-control" id="exampleInputEmail1" placeholder="Enter Start Date">
+                  </div>
+
+                  <div class="form-group  col-md-3">
+                      <label for="exampleInputPassword1">End Date</label>
+                      <input type="date" name="e_date" class="form-control" id="exampleInputPassword1" placeholder="Enter End Date">
+                  </div>
+                  <div class="form-group  col-md-3">
+                    <label for="exampleInputEmail1">Status</label>
+                    <select name="o_status" class="form-control">
+                       
+                        <option value="Pending">Pending</option>
+                        <option value="Confirm">Confirm</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Cancel">Cancel</option>
+                       
+                    </select>    
+                </div>
+
+                  <div class="form-group  col-md-1">
+                  <label for="exampleInputEmail1">&nbsp;</label>
+                  <button type="submit" class="btn btn-primary">Generate</button>
+                  </div>
+
+                  <div class="form-group col-md-1">
+                      <label for="exampleInputEmail1">&nbsp;</label><br/>
+                      <button type="submit" class="btn btn-primary" onclick="sprint('example1')">Print</button>
+                       </div>
+                 
+              </form>
+              <br/><br/><br/><br/>
+          </div>
+
+      </div>
+      <!-- /.box -->
+
+     
+
+    </div>
+
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">View Order Details{% if request.POST.s_date != None %} ({{request.POST.s_date}} to {{request.POST.e_date}}) {% endif %}</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>ID</th>
+                <th>User</th>
+                <th>Staff</th>
+               
+                <th>Pincode</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Shippingaddress</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+                <th>Action</th>
+            </tr> 
+            </thead>
+            <tbody>
+              {% for row in order_data %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+                    <td class="center">{{row.11}}<br/><span class="label-info label label-default">{{row.12}}</span></td>
+                    <td class="center">{{row.13}}<br/><span class="label-info label label-default">{{row.14}}</span></td>
+                   
+                    <td class="center">{{row.4}}</td>
+                    <td class="center">{{row.5}}</td>
+                    <td class="center">  ₹ {{row.6}}</td>
+                    <td class="center">{{row.7}}</td>
+                    <td class="center">
+                        <span class="label-{% if row.8 == 'Pending' %}warning{% elif row.8 == 'Confirm' %}info{% elif row.8 == 'Complete' %}success{% else %}danger{% endif %} label label-default">{{row.8}}</span>
+                        
+                    </td>
+                    <td class="center">{{row.9|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">{{row.10|date:'Y-m-d H:i:s'}}</td>
+                    <td class="center">
+                      <a class="btn btn-info" href="/adminapp/cart?order_id={{row.0}}&ord_status={{row.8}}">
+                        <i class="glyphicon glyphicon-edit icon-white"></i>
+                        Transfer Order
+                    </a>
+                    </td>
+              
+
+            </tr>
+            {% endfor %}
+           
+            </tfoot>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      
+      
+    </div>
+
+
+
+
+    <!--end-->
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  {% include 'footer.html' %}
+  
+
+  
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include 'script.html' %}
+<!-- jQuery 3 -->
+
+</body>
+</html>
